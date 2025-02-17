@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+	echo "No argument provided.."
+	exit 1
+fi
+
+if [ -d "$1" ]; then
+	timestamp=$(date +%Y%m%d_%H%M%S)
+	mkdir -p ./archives
+	tar -czf ./archives/logs_archive_${timestamp}.tar.gz $1
+else
+	echo "$1 is not a valid directory."
+	e~xit 1
+fi
